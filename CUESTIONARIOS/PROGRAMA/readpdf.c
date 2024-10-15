@@ -37,8 +37,18 @@ char	*ft_extrattextpdf(const char *pdf)
 	document = poppler_document_new_from_file(abs_path, NULL, &error);
 	if (!document)
 	{
-		write(1, "Error: Could not extract text from PDF.\n", 40);
-		return (NULL);
+		if (error)
+		{
+            		fprintf(stderr, "Error al abrir el PDF: %s\n", error->message);
+            		g_error_free(error);
+        	}
+		else
+		{
+            		fprintf(stderr, "Error: No se pudo abrir el PDF.\n");
+        	}
+        	return NULL;
+		/* write(1, "Error: Could not extract text from PDF.\n", 40);
+		return (NULL); */
 	}
 	pages = poppler_document_get_n_pages(document);
 	full_text = malloc(1);
