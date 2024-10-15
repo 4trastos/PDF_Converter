@@ -6,7 +6,7 @@
 /*   By: usuario <usuario@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 11:42:02 by usuario           #+#    #+#             */
-/*   Updated: 2024/10/15 12:12:09 by usuario          ###   ########.fr       */
+/*   Updated: 2024/10/15 14:06:30 by usuario          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ char	*get_file_uri(const char *path)
     uri = g_filename_from_uri(path, NULL, &error);
     if (!uri)
     {
-		write(1, "Error al convertir la ruta a URI:\n", 37);
+		write(1, "Error al convertir la ruta a URI:\n", 34);
         return (NULL);
     }
     return (uri);

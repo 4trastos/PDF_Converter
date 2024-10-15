@@ -6,7 +6,7 @@
 /*   By: usuario <usuario@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/13 16:41:41 by usuario           #+#    #+#             */
-/*   Updated: 2024/10/15 12:11:50 by usuario          ###   ########.fr       */
+/*   Updated: 2024/10/15 12:14:28 by usuario          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ char	*ft_extrattextpdf(const char *pdf)
 	if (!path)
 		return (NULL);
 	document = poppler_document_new_from_file(path, NULL, &error);
+	g_free(path);
 	if (!document)
 	{
 		if (error) {
