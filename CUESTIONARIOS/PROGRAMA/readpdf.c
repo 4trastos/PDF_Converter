@@ -30,7 +30,6 @@ char	*ft_extrattextpdf(const char *pdf)
 	if (!document)
 	{
 		write(1, "Error: Could not extract text from PDF.\n", 40);
-		printf("hola paolo\n");
 		return (NULL);
 	}
 	pages = poppler_document_get_n_pages(document);
