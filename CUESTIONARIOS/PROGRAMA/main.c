@@ -6,7 +6,7 @@
 /*   By: usuario <usuario@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/13 14:19:02 by usuario           #+#    #+#             */
-/*   Updated: 2024/10/13 19:13:55 by usuario          ###   ########.fr       */
+/*   Updated: 2024/10/14 14:33:10 by usuario          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,10 @@ int	main(int argc, char **argv)
 	char	fields[MAX_FIELDS][MAX_FIELD_LENGTH];
 	char	*pdf_text;
 	int		field_count;
+	int		flag;
 
 	pdf_text = NULL;
+	flag = 0;
 	if (argc != 2)
 	{
 		write(1, "Please insert .pdf file\n", 24);
@@ -66,7 +68,12 @@ int	main(int argc, char **argv)
 	/* pdf_text = ft_readpdffiles(argv[1]);
 	if (!pdf_text)
 		return (1); */
-	ft_readpdffiles(argv[1], pdf_text);
+	ft_readpdffiles(argv[1], pdf_text, &flag);
+	if (flag == -1)
+	{
+		write(1, "Error: SOLUCIONADO.\n", 40);
+		return (1);
+	}
 	field_count = ft_extractlields(pdf_text, fields, MAX_FIELDS);
 	free(pdf_text);
 	if (field_count == 0)

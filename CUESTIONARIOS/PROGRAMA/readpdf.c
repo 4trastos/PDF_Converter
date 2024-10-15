@@ -6,7 +6,7 @@
 /*   By: usuario <usuario@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/13 16:41:41 by usuario           #+#    #+#             */
-/*   Updated: 2024/10/13 19:17:46 by usuario          ###   ########.fr       */
+/*   Updated: 2024/10/14 14:33:33 by usuario          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 char	*ft_extrattextpdf(const char *pdf)
 {
 	PopplerDocument	*document;
-	PopplerDocument	*page;
+	PopplerPage		*page;
 	GError			*error;
 	char			*full_text;
 	char    		*text;
@@ -25,10 +25,12 @@ char	*ft_extrattextpdf(const char *pdf)
 
 	error = NULL;
 	pages = 0;
+	len = 0;
 	document = poppler_document_new_from_file(pdf, NULL, &error);
 	if (!document)
 	{
-		write(1, "Error: Could not extract text from PDF.\n", 28);
+		write(1, "Error: Could not extract text from PDF.\n", 40);
+		printf("hola paolo\n");
 		return (NULL);
 	}
 	pages = poppler_document_get_n_pages(document);
@@ -40,6 +42,7 @@ char	*ft_extrattextpdf(const char *pdf)
 	while (i < pages)
 	{
 		page = poppler_document_get_page(document, i);
+		printf("HOLLLLLLLLLLLAAAA %s\n", (char *)page);
 		if (page)
 		{
 			text = poppler_page_get_text(page);
@@ -56,12 +59,11 @@ char	*ft_extrattextpdf(const char *pdf)
 	return (full_text);
 }
 
-void	ft_readpdffiles(char *prontf, char *pdf_text)
+void	ft_readpdffiles(char *prontf, char *pdf_text, int *flag)
 {
-	char		*text;
-
-	text = ft_extrattextpdf(prontf);
-	if (!text)
-		return (NULL);
-	pdf_text = text;
+	pdf_text = ft_extrattextpdf(prontf);
+	if (!pdf_text)
+	{
+		*flag = -1;
+	}
 }

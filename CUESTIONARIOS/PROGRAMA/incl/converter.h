@@ -6,7 +6,7 @@
 /*   By: usuario <usuario@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/13 14:26:18 by usuario           #+#    #+#             */
-/*   Updated: 2024/10/13 19:15:37 by usuario          ###   ########.fr       */
+/*   Updated: 2024/10/14 14:32:43 by usuario          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int		ft_parsepdf(char *str);
 
 //*** READ PDF ***//
 
-void	ft_readpdffiles(char *prontf, char *pdf_text);
+void	ft_readpdffiles(char *prontf, char *pdf_text, int *flag);
 char	*ft_extrattextpdf(const char *pdf);
 int		ft_extractlields(char *pdf_text, char fields[][MAX_FIELD_LENGTH], int max);
 
