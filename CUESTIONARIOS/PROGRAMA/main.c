@@ -70,10 +70,7 @@ int	main(int argc, char **argv)
 		return (1); */
 	ft_readpdffiles(argv[1], pdf_text, &flag);
 	if (flag == -1)
-	{
-		write(1, "Error: SOLUCIONADO.\n", 40);
 		return (1);
-	}
 	field_count = ft_extractlields(pdf_text, fields, MAX_FIELDS);
 	free(pdf_text);
 	if (field_count == 0)
