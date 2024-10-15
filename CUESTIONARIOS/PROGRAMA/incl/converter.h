@@ -6,7 +6,7 @@
 /*   By: usuario <usuario@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/13 14:26:18 by usuario           #+#    #+#             */
-/*   Updated: 2024/10/14 14:32:43 by usuario          ###   ########.fr       */
+/*   Updated: 2024/10/15 11:44:25 by usuario          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # include <cjson/cJSON.h>
 # include <xlsxwriter.h>
 # include <regex.h>
+# include <sys/stat.h>
 
 # define MAX_FIELDS 1000
 # define MAX_FIELD_LENGTH 256
@@ -32,6 +33,8 @@ int		main(int argc, char **argv);
 //*** PARSE ***//
 
 int		ft_parsepdf(char *str);
+int     file_exists(const char* filename);
+char    *get_absolute_path(const char *pdf);
 
 //*** READ PDF ***//
 

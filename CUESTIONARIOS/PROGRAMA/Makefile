@@ -6,7 +6,7 @@
 #    By: usuario <usuario@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/13 14:19:13 by usuario           #+#    #+#              #
-#    Updated: 2024/10/14 14:14:20 by usuario          ###   ########.fr        #
+#    Updated: 2024/10/15 11:42:27 by usuario          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,7 @@ LIBS = `pkg-config --libs poppler-glib` -lcjson -lxlsxwriter
 
 SRC = main.c \
 	utils.c \
+	utils2.c \
 	readpdf.c \
 	createfiles.c
 

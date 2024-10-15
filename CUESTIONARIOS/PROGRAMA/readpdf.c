@@ -6,7 +6,7 @@
 /*   By: usuario <usuario@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/13 16:41:41 by usuario           #+#    #+#             */
-/*   Updated: 2024/10/14 14:33:33 by usuario          ###   ########.fr       */
+/*   Updated: 2024/10/15 11:48:36 by usuario          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ char	*ft_extrattextpdf(const char *pdf)
 	PopplerDocument	*document;
 	PopplerPage		*page;
 	GError			*error;
+	char			*abs_path;
 	char			*full_text;
 	char    		*text;
 	int				pages;
@@ -26,7 +27,14 @@ char	*ft_extrattextpdf(const char *pdf)
 	error = NULL;
 	pages = 0;
 	len = 0;
-	document = poppler_document_new_from_file(pdf, NULL, &error);
+	if (!file_exists(pdf)) {
+		write(1, "Error: El archivo PDF no existe.\n", 33);
+		return (NULL);
+	}
+	abs_path = get_absolute_path(pdf);
+	if (!abs_path)
+		return (NULL);
+	document = poppler_document_new_from_file(abs_path, NULL, &error);
 	if (!document)
 	{
 		write(1, "Error: Could not extract text from PDF.\n", 40);
@@ -41,7 +49,6 @@ char	*ft_extrattextpdf(const char *pdf)
 	while (i < pages)
 	{
 		page = poppler_document_get_page(document, i);
-		printf("HOLLLLLLLLLLLAAAA %s\n", (char *)page);
 		if (page)
 		{
 			text = poppler_page_get_text(page);

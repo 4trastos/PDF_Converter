@@ -6,11 +6,17 @@
 /*   By: usuario <usuario@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/13 15:36:16 by usuario           #+#    #+#             */
-/*   Updated: 2024/10/13 19:16:24 by usuario          ###   ########.fr       */
+/*   Updated: 2024/10/15 11:25:42 by usuario          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "incl/converter.h"
+
+int	file_exists(const char* filename)
+{
+	struct stat buffer;
+	return (stat(filename, &buffer) == 0);
+}
 
 char	*ft_strjoin(char *str, char *cat)
 {
