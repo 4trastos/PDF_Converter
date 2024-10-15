@@ -6,7 +6,7 @@
 /*   By: usuario <usuario@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/13 16:41:41 by usuario           #+#    #+#             */
-/*   Updated: 2024/10/15 11:48:36 by usuario          ###   ########.fr       */
+/*   Updated: 2024/10/15 12:11:50 by usuario          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ char	*ft_extrattextpdf(const char *pdf)
 	PopplerDocument	*document;
 	PopplerPage		*page;
 	GError			*error;
-	char			*abs_path;
+	char			*path;
 	char			*full_text;
 	char    		*text;
 	int				pages;
@@ -31,22 +31,22 @@ char	*ft_extrattextpdf(const char *pdf)
 		write(1, "Error: El archivo PDF no existe.\n", 33);
 		return (NULL);
 	}
-	abs_path = get_absolute_path(pdf);
+	/* abs_path = get_absolute_path(pdf);
 	if (!abs_path)
+		return (NULL); */
+	path = get_file_uri(pdf);
+	if (!path)
 		return (NULL);
-	document = poppler_document_new_from_file(abs_path, NULL, &error);
+	document = poppler_document_new_from_file(path, NULL, &error);
 	if (!document)
 	{
-		if (error)
-		{
-            		fprintf(stderr, "Error al abrir el PDF: %s\n", error->message);
-            		g_error_free(error);
-        	}
-		else
-		{
-            		fprintf(stderr, "Error: No se pudo abrir el PDF.\n");
-        	}
-        	return NULL;
+		if (error) {
+            fprintf(stderr, "Error al abrir el PDF: %s\n", error->message);
+            g_error_free(error);
+        } else {
+            fprintf(stderr, "Error: No se pudo abrir el PDF.\n");
+        }
+        return NULL;
 		/* write(1, "Error: Could not extract text from PDF.\n", 40);
 		return (NULL); */
 	}

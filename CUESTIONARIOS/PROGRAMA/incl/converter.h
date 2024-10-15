@@ -6,7 +6,7 @@
 /*   By: usuario <usuario@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/13 14:26:18 by usuario           #+#    #+#             */
-/*   Updated: 2024/10/15 11:44:25 by usuario          ###   ########.fr       */
+/*   Updated: 2024/10/15 12:03:40 by usuario          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ int		main(int argc, char **argv);
 int		ft_parsepdf(char *str);
 int     file_exists(const char* filename);
 char    *get_absolute_path(const char *pdf);
+char    *get_file_uri(const char *path);
 
 //*** READ PDF ***//
 
