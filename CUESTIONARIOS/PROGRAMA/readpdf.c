@@ -6,20 +6,20 @@
 /*   By: usuario <usuario@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/13 16:41:41 by usuario           #+#    #+#             */
-/*   Updated: 2024/10/15 12:14:28 by usuario          ###   ########.fr       */
+/*   Updated: 2024/10/16 17:59:19 by usuario          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "incl/converter.h"
 
-char	*ft_extrattextpdf(const char *pdf)
+char	*ft_extrattextpdf(const gchar *pdf)
 {
 	PopplerDocument	*document;
 	PopplerPage		*page;
 	GError			*error;
-	char			*path;
-	char			*full_text;
-	char    		*text;
+	gchar			*path;
+	gchar			*full_text;
+	gchar    		*text;
 	int				pages;
 	int				i;
 	size_t			len;
@@ -31,10 +31,10 @@ char	*ft_extrattextpdf(const char *pdf)
 		write(1, "Error: El archivo PDF no existe.\n", 33);
 		return (NULL);
 	}
-	/* abs_path = get_absolute_path(pdf);
-	if (!abs_path)
-		return (NULL); */
-	path = get_file_uri(pdf);
+	path = get_absolute_path(pdf);
+	if (!path)
+		return (NULL);
+	path = get_file_uri(path);
 	if (!path)
 		return (NULL);
 	document = poppler_document_new_from_file(path, NULL, &error);
@@ -76,9 +76,9 @@ char	*ft_extrattextpdf(const char *pdf)
 	return (full_text);
 }
 
-void	ft_readpdffiles(char *prontf, char *pdf_text, int *flag)
+void	ft_readpdffiles(char *prontf, gchar **pdf_text, int *flag)
 {
-	pdf_text = ft_extrattextpdf(prontf);
+	*pdf_text = ft_extrattextpdf(prontf);
 	if (!pdf_text)
 	{
 		*flag = -1;
