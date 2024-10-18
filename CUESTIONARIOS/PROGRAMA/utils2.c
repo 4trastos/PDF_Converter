@@ -31,7 +31,6 @@ char	*get_file_uri(const gchar *path)
     char	*uri;
 
     error = NULL;
-	printf("path : => %s\n", path);
     uri = g_filename_to_uri(path, NULL, &error);
     if (!uri)
     {
@@ -39,6 +38,5 @@ char	*get_file_uri(const gchar *path)
 		write(1, "Error al convertir la ruta a URI:\n", 34);
         return (NULL);
     }
-	printf("Ruta URI: => %s", uri);
     return (uri);
 }
