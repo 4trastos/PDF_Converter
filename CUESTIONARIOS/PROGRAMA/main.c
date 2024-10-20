@@ -65,13 +65,15 @@ int	main(int argc, char **argv)
 		write(1, "Error: File not found; insert .pdf file\n", 40);
 		return (1);
 	} */
-	ft_readpdffiles(argv[1], &pdf_text, &flag);
+	char *path = get_absolute_path(argv[1]);
+	char *uri = get_file_uri(path);
+	free(path);
+	ft_readpdffiles(uri, &pdf_text, &flag);
 	if (flag == -1)
 		return (1);
 	if (!pdf_text)
 		printf("patata\n");
 	field_count = ft_extractlields(pdf_text, fields, MAX_FIELDS);
-	free(pdf_text);
 	if (field_count == 0)
 	{
 		write(1, "Error: No fields were found in the PDF.\n", 40);
@@ -84,5 +86,6 @@ int	main(int argc, char **argv)
 	//Generar XLSX
 	writeXLSX("output.xlsx", fields, field_count);
 	write(1, "Successfully generated files: output.json, output.csv, output.xlsx\n", 67);
+	free(pdf_text);
 	return (0);
 }
