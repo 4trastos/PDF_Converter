@@ -6,7 +6,7 @@
 /*   By: usuario <usuario@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/13 15:36:16 by usuario           #+#    #+#             */
-/*   Updated: 2024/10/15 11:25:42 by usuario          ###   ########.fr       */
+/*   Updated: 2024/10/21 13:44:56 by usuario          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,22 +73,11 @@ char	*ft_strchr(char *str, int c)
 int	ft_parsepdf(char *str)
 {
 	char	*point;
-	int		i;
 
-	i = 0;
 	point = ft_strchr(str, '.');
 	if (!point)
 		return (-1);
-	i = point - str + 1;
-	if (str[i] == '\0')
-		return (-1);
-	while (str[i] != '\0')
-	{
-		if (str[i] != 'p' && str[i] != 'd' && str[i] != 'f')
-			return (-1);
-		i++;
-	}
-	if (str[i] != '\0')
+	if (ft_strcmp(point, ".pdf") == -1)
 		return (-1);
 	return (0);
 }

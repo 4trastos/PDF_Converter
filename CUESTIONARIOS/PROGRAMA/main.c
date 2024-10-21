@@ -6,7 +6,7 @@
 /*   By: usuario <usuario@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/13 14:19:02 by usuario           #+#    #+#             */
-/*   Updated: 2024/10/16 18:00:36 by usuario          ###   ########.fr       */
+/*   Updated: 2024/10/21 14:42:48 by usuario          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,19 +60,17 @@ int	main(int argc, char **argv)
 		write(1, "Please insert .pdf file\n", 24);
 		return (1);
 	}
-	/* if (ft_parsepdf(argv[1]) == -1)
+	if (ft_parsepdf(argv[1]) == -1)
 	{
 		write(1, "Error: File not found; insert .pdf file\n", 40);
 		return (1);
-	} */
+	}
 	char *path = get_absolute_path(argv[1]);
 	char *uri = get_file_uri(path);
 	free(path);
 	ft_readpdffiles(uri, &pdf_text, &flag);
 	if (flag == -1)
-		return (1);
-	if (!pdf_text)
-		printf("patata\n");
+		return (1);	
 	field_count = ft_extractlields(pdf_text, fields, MAX_FIELDS);
 	if (field_count == 0)
 	{

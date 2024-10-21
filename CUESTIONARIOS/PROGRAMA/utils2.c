@@ -6,7 +6,7 @@
 /*   By: usuario <usuario@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 11:42:02 by usuario           #+#    #+#             */
-/*   Updated: 2024/10/16 17:50:54 by usuario          ###   ########.fr       */
+/*   Updated: 2024/10/21 13:55:58 by usuario          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,4 +39,24 @@ char	*get_file_uri(const gchar *path)
         return (NULL);
     }
     return (uri);
+}
+
+int	ft_strcmp(char *str, char* target)
+{
+	int i = ft_strlen(str);
+	int j = ft_strlen(target);
+	if (i == j)
+	{
+		i = 0;
+		while(str[i] != '\0' && j > 0)
+		{
+			if (str[i] != target[i])
+				return (-1);
+			i++;
+			j--;	
+		}
+		return (0);
+	}
+	else
+		return (-1);	
 }
